@@ -7,6 +7,11 @@
                  If you modify it then add your name next to mine at the top, if you like drop me an email showing me what you improved, I love that sort of thing!
 --]]
 
+local blacklist = {
+	['disk'] = true,
+	['rom'] = true
+}
+
 --[[ 
     a e s t h e t i c onscreen text
 --]]

@@ -24,10 +24,6 @@ local givenDirectory = (args[2] and args[2] or '')
 --]]
 local title = 'Backup Creator'
 local version = 'v0.0.3'
-local blacklist = {
-	['disk'] = true,
-	['rom'] = true
-}
 local driveSide = common.findDrive()
 
 --[[
@@ -37,7 +33,7 @@ local function backup()
 	common.colorMessage(colors.white, 'Beginning backup operation...')
     if (fs.exists(givenDirectory)) then
         common.writeToDisk(givenDirectory)
-        common.labelDisk(driveSide, 'backup')
+        common.labelDisk('backup')
     else
         common.colorMessage(colors.red, 'Directory not found!\nPlease specify an existing directory.')
     end
@@ -69,7 +65,7 @@ local function start()
                 backup()
             else
                 common.colorMessage(colors.white, 'The disk inserted already contains data.')
-                local promptToFormat = common.userPrompt('Will you format '..disk.getLabel(driveSide)..'?')
+                local promptToFormat = common.polarPrompt('Will you format '..disk.getLabel(driveSide)..'?')
                 if (promptToFormat == true) then
                     common.formatDisk()
                     backup()
