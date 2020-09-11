@@ -96,7 +96,7 @@ if (givenTask == 'start') then
 elseif (givenTask == 'restore') then
     restore()
 else
-    colorMessage(colors.red, 'Command not recognised!')    
+    common.colorMessage(colors.red, 'Command not recognised!')    
 end
 
 -- shutdown
