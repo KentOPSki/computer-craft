@@ -49,15 +49,15 @@ function polarPrompt(text)
 end
 
 --[[ 
-    returns which side a "Disk Drive" is on, if one is present
+    finds and returns the location of the "Disk Drive", if one is present
 --]]
 function findDrive()
-    -- iterate through all available sides from redstone API
-    for index, side in pairs(rs.getSides()) do
-        -- check for a peripheral connected on side and find the disk drive by checking its type
-        if peripheral.isPresent(side) and peripheral.getType(side) == "drive" then
-            -- define which side the drive is connected on
-            return side
+    -- iterate through all available peripherals connected 
+    for index, name in pairs(peripheral.getNames()) do
+        -- check against each peripherals type
+        if peripheral.getType(name) == "drive" then
+            -- return the location of the disk drive
+            return name
         end
     end
     colorMessage(colors.red, 'No disk drive found!\nPlease connect a disk drive to continue.')
